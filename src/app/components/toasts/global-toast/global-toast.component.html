@@ -1,0 +1,8 @@
+<ngb-toast
+    *ngFor="let toast of globalToastService.toasts"
+    [header]="toast.header"
+    [autohide]="true"
+    (hiddden)="globalToastService.remove(toast)"
+>
+    {{ toast.body }}
+</ngb-toast>

@@ -1,0 +1,44 @@
+<div class="container w-100">
+    <h1 class="fs-5 text-secondary pt-5">Editar producto</h1>
+    <div class="bg-white shadow rounded px-4 py-3">
+        <form [formGroup]="productForm">
+            <div class="form-floating mb-2">
+                <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    id="productIdInput"
+                    placeholder="0"
+                    formControlName="id"
+                />
+                <label for="productNameInput">Identificador del producto</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="productNameInput"
+                    placeholder="Producto"
+                    formControlName="name"
+                />
+                <label for="productNameInput">Nombre del producto</label>
+            </div>
+            <div class="form-check form-switch">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="productStatusInput"
+                    formControlName="status"
+                />
+                <label class="form-check-label" for="productStatusInput">
+                    Defectuoso
+                </label>
+            </div>
+        </form>
+
+        <div class="text-end mt-2">
+            <button type="button" class="btn btn-primary" (click)="edit()">Editar</button>
+        </div>
+    </div>
+</div>

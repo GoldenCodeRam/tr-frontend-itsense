@@ -1,0 +1,15 @@
+<div class="container w-100">
+  <h1 class="fs-5 text-secondary pt-5">Crear producto</h1>
+  <div class="bg-white shadow rounded px-4 py-3">
+    <form [formGroup]="productForm">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="productNameInput" placeholder="Producto" formControlName="name">
+        <label for="productNameInput">Nombre del producto</label>
+      </div>
+    </form>
+
+    <div class="text-end mt-2">
+      <button type="button" class="btn btn-primary" (click)="create()">Crear</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="container w-100 py-5">
+    <h1 class="fs-5 text-secondary">Lista de productos</h1>
+    <div class="d-flex flex-column bg-white rounded shadow px-4 py-3 gap-2">
+        <p class="text-center m-0 p-0" *ngIf="products.length === 0">
+            Sin productos
+        </p>
+        <div
+            *ngFor="let product of products"
+            class="row border rounded px-3 py-2"
+        >
+            <div class="col-7">
+                <p class="text-secondary m-0 p-0">
+                    Producto : {{ product.id }}
+                </p>
+                <p class="m-0 p-0">
+                    {{ product.name }}
+                </p>
+                <span
+                    *ngIf="product.status"
+                    class="badge rounded-pill text-bg-warning"
+                >
+                    Defectuoso
+                </span>
+                <span
+                    *ngIf="!product.status"
+                    class="badge rounded-pill text-bg-info"
+                >
+                    OK
+                </span>
+            </div>
+            <div class="d-flex flex-column col-5 justify-content-center">
+                <div class="d-flex justify-content-center flex-wrap gap-2">
+                    <button
+                        type="button"
+                        class="btn btn-secondary btn-sm"
+                        [routerLink]="['/products/edit', product.id]"
+                    >
+                        Editar
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="remove(content, product)">
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Eliminar producto</h4>
+        <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+        ></button>
+    </div>
+    <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar el producto?
+    </div>
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="modal.close('Save click')"
+        >
+            Eliminar
+        </button>
+    </div>
+</ng-template>
